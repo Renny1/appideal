@@ -1,26 +1,35 @@
 <ion-view view-title="" name="login-view">
-  <ion-content scroll="false" class="bg-color">
-  <div>
-    <img src="img/logo.png" class="img-responsive">
-  </div>
-  <div class="row">
-    <div class="col">
-      <label class="item item-input">
-        <input type="text" placeholder="E-mail" ng-model="data.username" />
-      </label>
-      <div class="inputeffect"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <label class="item item-input">
-        <input type="password" placeholder="Senha" ng-model="data.password" />
-      </label>
-    </div>
-  </div>  
-  <button class="button button-block button-calm" ng-click="login()">Entrar</button>
-  <label class="col">
-    <button class="button button-clear button-stable" ng-click="forget()">Esqueci minha senha...</button>
-  </label>
-  </ion-content>
+<ion-content scroll="false" class="bg-color">
+
+
+<div class="center">
+	<div class="col-67 paddingTop40 paddingBottom25">
+		<img src="img/logo.png" class="img-responsive">
+	</div>
+</div>
+
+<div class="row center paddingBottom10">
+	<div class="col-67">
+		<label class="item item-input">
+			<input type="text" placeholder="E-mail" ng-model="data.username" />
+		</label>
+		<div class="inputeffect"></div>
+	</div>
+</div>
+<div class="row center">
+	<div class="col-67">
+		<label class="item item-input">
+			<input type="password" placeholder="Senha" ng-model="data.password" />
+		</label>
+	</div>
+</div> 
+<div class="row center">
+	<div class="col-25">
+	<img src="img/btn_login.png" class="img-responsive paddingTop25">
+	</div>
+</div>
+<label class="col">
+	<button class="button button-clear button-stable" ng-click="forget()">Esqueci minha senha...</button>
+</label>
+</ion-content>
 </ion-view>
