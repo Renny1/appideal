@@ -1,12 +1,12 @@
 angular.module('starter.controllers',['ionic'])
 
-.controller('LoginCtrl', function($scope, LoginService, PostService, $ionicPopup, $state, $http, IDEALFactory, $ionicLoading) {
+.controller('LoginCtrl', function($scope, PostService, $ionicPopup, $state, $http, IDEALFactory, $ionicLoading) {
     $scope.data = {};
 
     $scope.data.persistente = false;
     $scope.login = function() {
         $ionicLoading.show({template: 'Carregando...'});
-        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+        PostService.post($scope.data.username, $scope.data.password).success(function(data) {
             IDEALFactory.setUser({
                 'username' : $scope.data.username
             },true);
