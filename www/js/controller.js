@@ -31,7 +31,5 @@ angular.module('starter.controllers',['ionic'])
 
 })
 
-.controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
-
-
-});
+.controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {})
+.controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {});

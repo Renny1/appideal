@@ -91,6 +91,12 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     controller: 'MainCtrl'
   })
 
+  .state('interno', {
+    url: '/interno',
+    templateUrl: 'templates/interno.html',
+    controller: 'InternoCtrl'
+  })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
