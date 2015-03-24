@@ -7,9 +7,12 @@ angular.module('starter.controllers',['ionic'])
     $scope.login = function() {
         $ionicLoading.show({template: 'Carregando...'});
         PostService.post($scope.data.username, $scope.data.password).success(function(data) {
+
             IDEALFactory.setUser({
                 'username' : $scope.data.username
             },true);
+
+            
             $ionicLoading.hide();
             $state.go('home');
         }).error(function(data) {
