@@ -97,6 +97,12 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     controller: 'InternoCtrl'
   })
 
+  .state('acordion', {
+    url: '/acordion',
+    templateUrl: 'templates/acordion.html',
+    controller: 'AcordionCtrl'
+  })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 

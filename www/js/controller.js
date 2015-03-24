@@ -33,7 +33,49 @@ angular.module('starter.controllers',['ionic'])
 
 .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {})
 .controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
-    $scope.page = "guia";
-    // $scope.page = "info";
+    
+    $scope.page = "info";
     // $scope.page = "briefing";
-});
+    $scope.groups = [];
+      for (var i=0; i<10; i++) {
+        $scope.groups[i] = {
+          name: i,
+          items: []
+        };
+        for (var j=0; j<3; j++) {
+          $scope.groups[i].items.push(i + '-' + j);
+        }
+      }
+      $scope.toggleGroup = function(group) {
+        if ($scope.isGroupShown(group)) {
+          $scope.shownGroup = null;
+        } else {
+          $scope.shownGroup = group;
+        }
+      };
+      $scope.isGroupShown = function(group) {
+        return $scope.shownGroup === group;
+      };
+      
+    
+    /*
+    <ion-item class="item-stable"
+                ng-click="toggleGroup(group)"
+                ng-class="{active: isGroupShown(group)}">
+          <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+        &nbsp;
+        Group {{group.name}}
+      </ion-item>
+      <ion-item class="item-accordion"
+                ng-repeat="item in group.items"
+                ng-show="isGroupShown(group)">
+        {{item}}
+      </ion-item>
+    //*/
+    
+})
+.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
+
+})
+
+;
