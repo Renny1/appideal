@@ -1,6 +1,9 @@
 /* Empty. Add your own CSS if you like */
+@import url(fonts/fonts.css);
+
 body{
 	color: #FFFFFF;
+	font-family: flamalight;
 }
 .bg-color{
 	background-color: #0f8db1;
@@ -22,7 +25,9 @@ body{
 .paddingTop25{padding-top:25px;}
 .paddingTop30{padding-top:30px;}
 .paddingTop40{padding-top:40px;}
+.paddingTop58{padding-top:58px;}
 .paddingBottom10{padding-bottom:10px;}
+.paddingBottom15{padding-bottom:15px;}
 .paddingBottom25{padding-bottom:25px;
 }
 
@@ -55,4 +60,16 @@ body{
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
+}
+
+.esqueceuSenha{
+
+	font-family: flamalight;
+
+}
+
+
+.item-input{
+
+	height:30px;
 }
