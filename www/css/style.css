@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+.bg-color{
+	background-color: #0f8db1;
+}
+
+.img-responsive{
+	max-width: 100%;
+	height: auto;
+}
