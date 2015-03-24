@@ -32,4 +32,8 @@ angular.module('starter.controllers',['ionic'])
 })
 
 .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {})
-.controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {});
+.controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
+    $scope.page = "guia";
+    // $scope.page = "info";
+    // $scope.page = "briefing";
+});
