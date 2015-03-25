@@ -9,6 +9,7 @@ body{
 	background-color: #0f8db1;
 }
 
+.iconVoltar{width: 25px;margin: 8px 0px 0px 10px;}
 .iconImg{width: 18px; margin-top: 3px;}
 .floatLeft{float:left;}
 .floatRight{float:right;}

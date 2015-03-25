@@ -1,5 +1,5 @@
 angular.module('starter.controllers', ['ionic'])
-
+.filter('trustAsHtml', function($sce) { return $sce.trustAsHtml; })
 .controller('LoginCtrl', function($scope, PostService, $ionicPopup, $state, $http, IDEALFactory, $ionicLoading) {
   $scope.data = {};
 
@@ -34,11 +34,16 @@ angular.module('starter.controllers', ['ionic'])
 })
 
 .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {})
-.controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams) {
-
+  .controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
+    $scope.getBack = function() {
+      $ionicViewService.getBackView().go();
+    }
     $scope.page = $stateParams.page;
-
-var arrayItems = [["Teste", "economico", "20/05"],["Teste", "economico", "20/05"],["Teste", "economico", "20/05"]];
+    var arrayItems = [
+      ["Teste", "economico", "20/05"],
+      ["Teste", "economico", "20/05"],
+      ["Teste", "economico", "20/05"]
+    ];
 
 
     $scope.items = arrayItems;
@@ -46,77 +51,83 @@ var arrayItems = [["Teste", "economico", "20/05"],["Teste", "economico", "20/05"
   })
 
 
-.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
-  $scope.page = "guias";
-  // $scope.page = "briefing";
-  $scope.groups = [];
-  for (var i = 0; i < 10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: []
+.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
+    $scope.page = "guias";
+
+    $scope.getBack = function() {
+      $ionicViewService.getBackView().go();
+    }
+
+    // $scope.page = "briefing";
+    $scope.groups = [];
+    for (var i = 0; i < 10; i++) {
+      $scope.groups[i] = {
+        name: i,
+        items: []
+      };
+      for (var j = 0; j < 8; j++) {
+        $scope.groups[i].items.push(i + '-' + j);
+      }
+    }
+    $scope.toggleGroup = function(group) {
+      if ($scope.isGroupShown(group)) {
+        $scope.shownGroup = null;
+      } else {
+        $scope.shownGroup = group;
+      }
     };
-    for (var j = 0; j < 8; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }
-  $scope.toggleGroup = function(group) {
-    if ($scope.isGroupShown(group)) {
-      $scope.shownGroup = null;
-    } else {
-      $scope.shownGroup = group;
-    }
-  };
-  $scope.isGroupShown = function(group) {
-    return $scope.shownGroup === group;
-  };
-
-
-  /*
-  <ion-item class="item-stable"
-              ng-click="toggleGroup(group)"
-              ng-class="{active: isGroupShown(group)}">
-        <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-      &nbsp;
-      Group {{group.name}}
-    </ion-item>
-    <ion-item class="item-accordion"
-              ng-repeat="item in group.items"
-              ng-show="isGroupShown(group)">
-      {{item}}
-    </ion-item>
-  //*/
-})
-.controller('NotesCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams) {
-
-
-$scope.id = $stateParams.id;
-console.log($scope.id);
-
-   $scope.page = $stateParams.page;
-
-
-
-  // $scope.page = "briefing";
-  $scope.groups = [];
-  for (var i = 0; i < 10; i++) {
-    $scope.groups[i] = {
-      name: i,
-      items: []
+    $scope.isGroupShown = function(group) {
+      return $scope.shownGroup === group;
     };
-    for (var j = 0; j < 8; j++) {
-      $scope.groups[i].items.push(i + '-' + j);
-    }
-  }
-  $scope.toggleGroup = function(group) {
-    if ($scope.isGroupShown(group)) {
-      $scope.shownGroup = null;
-    } else {
-      $scope.shownGroup = group;
-    }
-  };
-  $scope.isGroupShown = function(group) {
-    return $scope.shownGroup === group;
-  };
 
-})
-;
+
+    /*
+    <ion-item class="item-stable"
+                ng-click="toggleGroup(group)"
+                ng-class="{active: isGroupShown(group)}">
+          <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+        &nbsp;
+        Group {{group.name}}
+      </ion-item>
+      <ion-item class="item-accordion"
+                ng-repeat="item in group.items"
+                ng-show="isGroupShown(group)">
+        {{item}}
+      </ion-item>
+    //*/
+  })
+  .controller('NotesCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
+
+    $scope.getBack = function() {
+      $ionicViewService.getBackView().go();
+    }
+    $scope.id = $stateParams.id;
+    console.log($scope.id);
+
+    $scope.page = $stateParams.page;
+
+
+
+    // $scope.page = "briefing";
+    $scope.groups = [];
+    for (var i = 0; i < 10; i++) {
+      $scope.groups[i] = {
+        name: i,
+        items: []
+      };
+      for (var j = 0; j < 8; j++) {
+        $scope.groups[i].items.push(i + '-' + j);
+      }
+    }
+    $scope.toggleGroup = function(group) {
+      if ($scope.isGroupShown(group)) {
+        $scope.shownGroup = null;
+      } else {
+        $scope.shownGroup = group;
+      }
+    };
+    $scope.isGroupShown = function(group) {
+      return $scope.shownGroup === group;
+    };
+
+  });
