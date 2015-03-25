@@ -92,7 +92,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
   })
 
   .state('interno', {
-    url: '/interno',
+    url: '/interno/:page',
     templateUrl: 'templates/interno.html',
     controller: 'InternoCtrl'
   })
@@ -101,6 +101,11 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     url: '/acordion',
     templateUrl: 'templates/acordion.html',
     controller: 'AcordionCtrl'
+  })
+  .state('notes', {
+    url: '/notes/:page/:id',
+    templateUrl: 'templates/notes.html',
+    controller: 'NotesCtrl'
   })
 
   // if none of the above states are matched, use this as the fallback
