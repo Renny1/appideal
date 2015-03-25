@@ -31,8 +31,10 @@ body{
 .paddingTop11{  padding-top: 11px;}
 .paddingTop25{padding-top:25px;}
 .paddingTop30{padding-top:30px!important;}
-.paddingTop40{padding-top:40px;}
-.paddingTop58{padding-top:58px!important;;}
+.paddingTop40{padding-top: 40px;}
+.paddingTop79{padding-top: 79px;}
+.paddingTop58{padding-top:58px!important;}
+.paddingBottom5{padding-bottom:5px;}
 .paddingBottom10{padding-bottom:10px!important;}
 .paddingBottom15{padding-bottom:15px;}
 .paddingBottom25{padding-bottom:25px;}
