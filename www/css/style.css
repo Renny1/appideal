@@ -25,7 +25,11 @@ body{
 .marginTop12{margin-top: 12px;}
 .marginBottom4{margin-bottom: 4px;}
 .marginLeft7{margin-left: 7px;}
+.marginRight17{margin-right: 17px;}
 .paddingLeft10{padding-left: 10px;}
+.paddingLeft15{padding-left: 15px;}
+.paddingTop1{padding-top: 1px;}
+.paddingTop4{padding-top: 4px;}
 .paddingTop5{padding-top: 5px;}
 .paddingTop7{  padding-top: 7px;}
 .paddingTop11{  padding-top: 11px;}
@@ -124,4 +128,6 @@ padding: 5px 16px 5px 16px;
 
   padding: 10px 16px 10px 16px;
   color: #FFF!important;
+  border-top-color: #FFF!important;
+  border-bottom-color: rgba(0, 0, 0, 0)!important;
 }
