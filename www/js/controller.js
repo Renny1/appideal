@@ -8,7 +8,7 @@ angular.module('starter.controllers', ['ionic'])
     $ionicLoading.show({
       template: 'Carregando...'
     });
-    PostService.post($scope.data.username, $scope.data.password).success(function(data) {
+/*    PostService.post($scope.data.username, $scope.data.password).success(function(data) {
 
       IDEALFactory.setUser({
         'username': $scope.data.username
@@ -24,7 +24,8 @@ angular.module('starter.controllers', ['ionic'])
         template: 'Por favor, cheque sua conexão!'
       });
     });
-
+*/
+$state.go("main");
   }
 
   $scope.forget = function() {
@@ -33,7 +34,13 @@ angular.module('starter.controllers', ['ionic'])
 
 })
 
-.controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {})
+.controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
+
+  $ionicLoading.hide({
+      template: 'Carregando...'
+    });
+
+})
   .controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
     $scope.getBack = function() {
       $ionicViewService.getBackView().go();
