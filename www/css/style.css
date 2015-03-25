@@ -10,7 +10,8 @@ body{
 }
 
 .iconVoltar{width: 25px;margin: 8px 0px 0px 10px;}
-.iconImg{width: 18px; margin-top: 3px;}
+/*arrumar*/
+.iconImg{width: 31px; margin-top: 3px;}
 .floatLeft{float:left;}
 .floatRight{float:right;}
 .img-responsive{max-width: 100%;height: auto;}
