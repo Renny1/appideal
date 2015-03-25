@@ -11,6 +11,10 @@ body{
 
 .iconVoltar{width: 25px;margin: 8px 0px 0px 10px;}
 /*arrumar*/
+input[type="text"], input[type="password"]{
+  line-height: 34px!important;
+
+}
 .iconImg{width: 31px; margin-top: 3px;}
 .floatLeft{float:left;}
 .floatRight{float:right;}
@@ -28,13 +32,15 @@ body{
 .marginBottom4{margin-bottom: 4px;}
 .marginLeft7{margin-left: 7px;}
 .marginRight17{margin-right: 17px;}
+.paddingLeft5{padding-left: 5px;}
 .paddingLeft10{padding-left: 10px;}
 .paddingLeft15{padding-left: 15px;}
 .paddingTop1{padding-top: 1px;}
+.paddingTop3{ padding-top: 3px;}
 .paddingTop4{padding-top: 4px;}
 .paddingTop5{padding-top: 5px;}
 .paddingTop7{  padding-top: 7px;}
-.paddingTop11{  padding-top: 11px;}
+.paddingTop11{  padding-top: 11px!important;}
 .paddingTop25{padding-top:25px;}
 .paddingTop30{padding-top:30px!important;}
 .paddingTop40{padding-top: 40px;}
@@ -79,6 +85,8 @@ body{
 }
 .esqueceuSenha{
 	font-family: flamalight;
+	font-size: 14px;
+	white-space: nowrap;
 }
 .item-input{
 	height:30px;

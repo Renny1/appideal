@@ -84,19 +84,16 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     templateUrl: 'templates/login.html',
     controller: 'LoginCtrl'
   })
-
   .state('main', {
     url: '/main',
     templateUrl: 'templates/main.html',
     controller: 'MainCtrl'
   })
-
   .state('interno', {
     url: '/interno/:page',
     templateUrl: 'templates/interno.html',
     controller: 'InternoCtrl'
   })
-
   .state('acordion', {
     url: '/acordion',
     templateUrl: 'templates/acordion.html',
@@ -107,7 +104,11 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     templateUrl: 'templates/notes.html',
     controller: 'NotesCtrl'
   })
-
+  .state('esqueceusenha', {
+    url: '/esqueceusenha',
+    templateUrl: 'templates/esqueceusenha.html',
+    controller: 'EsqueceuSenhaCtrl'
+  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 

@@ -1,0 +1,36 @@
+<ion-view view-title="" name="login-view">
+<ion-content scroll="false" class="bg-color center">
+<div class="row">
+<div class="col">
+
+<div class="center">
+	<div class="col-67 paddingTop40 paddingBottom25">
+		<img src="img/logo.png" class="img-responsive">
+	</div>
+</div>
+
+<div class="row center paddingBottom15">
+	<div class="col-67">
+		<label class="item item-input">
+			<input type="text" placeholder="E-mail" ng-model="data.username" />
+		</label>
+		<div class="inputeffect"></div>
+	</div>
+</div>
+<div class="row center">
+
+<div class="col-50 center paddingTop25" ng-click="login()">
+      <img src="img/icons/btn_login_icon.png" class="img-responsive floatLeft iconImg">
+      <span class="floatLeft paddingLeft5 paddingTop3 ng-binding">Enviar</span>
+    </div>
+
+</div>
+<div class="row center paddingTop11">
+	<div class="col-75 center">
+		<button class="button button-clear button-stable esqueceuSenha textWhite" ng-click="forget()">Esqueci minha senha</button>
+	</div>
+</div>
+</div>
+</div>
+</ion-content>
+</ion-view>
