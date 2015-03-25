@@ -8,22 +8,5 @@
     <div class="center" style="background-color:#FFF;">
       <img src="img/def_{{page}}_azul.png" class="img-responsive">
     </div>
-
-    <ion-list>
-        <div ng-repeat="group in groups">
-          <ion-item class="item-stable"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-            Group {{group.name}}
-          </ion-item>
-          <ion-item class="item-accordion"
-                    ng-repeat="item in group.items"
-                    ng-show="isGroupShown(group)">
-            {{item}}
-          </ion-item>
-        </div>
-      </ion-list>
   </ion-content>
 </ion-view>

@@ -34,7 +34,11 @@ angular.module('starter.controllers',['ionic'])
 .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {})
 .controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
     
-    $scope.page = "info";
+
+    
+})
+.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
+     $scope.page = "info";
     // $scope.page = "briefing";
     $scope.groups = [];
       for (var i=0; i<10; i++) {
@@ -42,7 +46,7 @@ angular.module('starter.controllers',['ionic'])
           name: i,
           items: []
         };
-        for (var j=0; j<3; j++) {
+        for (var j=0; j<8; j++) {
           $scope.groups[i].items.push(i + '-' + j);
         }
       }
@@ -72,10 +76,6 @@ angular.module('starter.controllers',['ionic'])
         {{item}}
       </ion-item>
     //*/
-    
-})
-.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope) {
-
 })
 
 ;
