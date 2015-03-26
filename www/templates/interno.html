@@ -1,41 +1,32 @@
 <ion-view view-title="" name="login-view">
-<ion-content scroll="true" class="bg-color">
-<div class="row">
-  <div class="col-50 col-offset-25">
-    <img src="img/logo.png" class="img-responsive">
-  </div>
-</div>
-
-<div class="row" style="background-color:#FFF;">
-<div class="iconVoltar" ng-click="getBack()">
-<img src="img/icons/voltar.png" class="img-responsive floatRight">
-</div>
-<div class="col-80 center">
-  <img src="img/icons/def_info_azul_icon.png" class="img-responsive iconImg floatRight">
-  <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page == 'informacoes'"> Informações</h3>
-  <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page != 'informacoes'"> {{page}}</h3>
-  </div>
-</div>
-
-<ion-list>
-<ion-item href="#/notes/{{page}}/{{$index}}" class="interna-item" ng-repeat="item in items">
-
-<div class="row">
-  <div class="col-75">
-    <h5 ng-bind-html="item[0] | trustAsHtml" class="textWhite fontSize17 fontFlamalight item-text-wrap">{{item[0]}}</h5>
-    
-  </div>
-  <div class="col-25">
-    <span ng-bind-html="item[2] | trustAsHtml" class="textWhite fontSize17 floatRight fontFlamalight item-text-wrap">{{item[2]}}</span>
-  </div>
-
-</div>
-
-
-
-</ion-item>
-
-
-</ion-list>
-</ion-content>
+  <ion-header-bar align-title="left" class="bar-positive fix-header bg-color">
+    <div class="row">
+      <div class="col-50 col-offset-25">
+        <img src="img/logo.png" class="img-responsive">
+      </div>
+    </div>
+    <div class="row banerTitle" style="background-color:#FFF;">
+      <div class="iconVoltar" ng-click="getBack()">
+        <img src="img/icons/voltar.png" class="img-responsive floatRight">
+      </div>
+      <div class="col-80 center">
+        <img src="img/icons/def_info_azul_icon.png" class="img-responsive iconImg floatRight">
+        <h3 class="greenIdeal textCapitalize fontFlamalight" ng-if="page != 'informacoes'"> {{page}}</h3>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content scroll="true" class="bg-color">      
+    <ion-list>
+      <ion-item href="#/notes/{{page}}/{{$index}}" class="interna-item" ng-repeat="item in items" ng-class="{'no-border' : $index == 0}">
+      <div class="row">
+        <div class="col-75">
+          <h5 ng-bind-html="item[0] | trustAsHtml" class="textWhite fontSize17 fontFlamalight item-text-wrap">{{item[0]}}</h5>
+        </div>
+        <div class="col-25">
+          <span ng-bind-html="item[2] | trustAsHtml" class="textWhite fontSize17 floatRight fontFlamalight item-text-wrap">{{item[2]}}</span>
+        </div>
+      </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>

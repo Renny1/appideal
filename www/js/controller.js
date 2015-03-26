@@ -126,7 +126,7 @@ angular.module('starter.controllers', ['ionic'])
     $scope.page = $stateParams.page;
 
 
-
+    $scope.titulo = "<h1>cabeçalho notes</h1>";
     // $scope.page = "briefing";
     $scope.groups = [];
     for (var i = 0; i < 10; i++) {

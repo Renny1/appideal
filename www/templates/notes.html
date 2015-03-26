@@ -1,45 +1,39 @@
 <ion-view view-title="" name="login-view">
-<ion-content scroll="true" class="bg-color">
-<div class="row">
-  <div class="col-50 col-offset-25">
-    <img src="img/logo.png" class="img-responsive">
-  </div>
-</div>
-
-<div class="row" style="background-color:#FFF;">
-<div class="iconVoltar" ng-click="getBack()">
-<img src="img/icons/voltar.png" class="img-responsive floatRight">
-</div>
-<div class="col-80 center">
-  <img src="img/icons/def_info_azul_icon.png" class="img-responsive iconImg floatRight">
-  <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page == 'informacoes'"> Informações Notes</h3>
-  <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page != 'informacoes'"> {{page}} Notes</h3>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <p ng-bind-html="item[0] | trustAsHtml" class="fontFlamalight">dsa asdd asasd  asd asd asd asd asd asd asd asd asdd ad asda s</p>
-  </div>
-
-</div>
-
-
-<ion-list>
-<div ng-repeat="group in groups">
-  <ion-item class="item-stable arcoddion fontFlamalight"
-  ng-click="toggleGroup(group)"
-  ng-class="{active: isGroupShown(group)}">
-  <i class="icon " ng-class="isGroupShown(group) ? 'ion-android-remove-circle' : 'ion-android-add-circle'"></i>
-  &nbsp;
-  Group {{group.name}}
-</ion-item>
-<ion-item class="item-accordion"
-ng-repeat="item in group.items"
-ng-show="isGroupShown(group)">
-{{item}}
-</ion-item>
-</div>
-</ion-list>
-</ion-content>
+<ion-header-bar align-title="left" class="bar-positive fix-header bg-color">
+    <div class="row">
+      <div class="col-50 col-offset-25">
+        <img src="img/logo.png" class="img-responsive">
+      </div>
+    </div>
+    <div class="row banerTitle" style="background-color:#FFF;">
+      <div class="iconVoltar" ng-click="getBack()">
+        <img src="img/icons/voltar.png" class="img-responsive floatRight">
+      </div>
+      <div class="col-80 center">
+        <img src="img/icons/def_info_azul_icon.png" class="img-responsive iconImg floatRight">
+        <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page == 'materiais'"> Materiais</h3>
+        <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page != 'materiais'"> {{page}} Notes</h3>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content scroll="true" class="bg-color">
+    <div class="row">
+      <div class="col">
+        <p ng-bind-html="titulo | trustAsHtml" class="fontFlamalight">dsa asdd asasd  asd asd asd asd asd asd asd asd asdd ad asda s</p>
+      </div>
+    </div>
+    <ion-list>
+      <div ng-repeat="group in groups">
+        <ion-item class="item-stable arcoddion fontFlamalight"
+          ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+          <i class="icon " ng-class="isGroupShown(group) ? 'ion-android-remove-circle' : 'ion-android-add-circle'"></i>
+          &nbsp;
+          Group {{group.name}}
+        </ion-item>
+        <ion-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)">
+        {{item}}
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
 </ion-view>
