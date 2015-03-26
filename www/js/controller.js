@@ -33,13 +33,13 @@ angular.module('starter.controllers', ['ionic'])
     $scope.forget = function() {
       /* window.open('http://conexaojbs.agencianuts.com.br/i-o/lostpassword/','_blank', 'location=no');*/
     };
+    $scope.esqueceusenha = function() {
+      $state.go("esqueceusenha");
+    };
 
   })
   .controller('EsqueceuSenhaCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
 
-  $scope.esqueceusenha = function() {
-       $state.go("esqueceusenha");
-    };
 
   })
   .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
@@ -70,8 +70,8 @@ angular.module('starter.controllers', ['ionic'])
   })
 
 
-.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService,  $stateParams) {
-    
+.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService, $stateParams) {
+
 
     $scope.page = $stateParams.page;
 
@@ -154,19 +154,19 @@ angular.module('starter.controllers', ['ionic'])
   })
 
 .controller('ContatoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
-$scope.groups = [];
-    for (var i = 0; i < 10; i++) {
-      $scope.groups[i] = {
-        name: 'Thiago',
-        cargo: (i % 2) ? null : 'Presidente',
-        phone: '+55 11 9 9999-9999',
-        email: 'thiago@mobint.com.brs'
-      };
-    }
+  $scope.groups = [];
+  for (var i = 0; i < 10; i++) {
+    $scope.groups[i] = {
+      name: 'Thiago',
+      cargo: (i % 2) ? null : 'Presidente',
+      phone: '+55 11 9 9999-9999',
+      email: 'thiago@mobint.com.brs'
+    };
+  }
 
-    $scope.getBack = function() {
-      $ionicViewService.getBackView().go();
-    }
+  $scope.getBack = function() {
+    $ionicViewService.getBackView().go();
+  }
 
-    
+
 });
