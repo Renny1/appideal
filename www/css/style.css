@@ -158,3 +158,14 @@ padding: 5px 16px 5px 16px;
 .no-border{
 	border-top-color: transparent !important;
 }
+
+/* iOS Specific Overrides to fix logo overlap */
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 25px;
+}
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+  height: 140px;
+}
+.platform-ios7.platform-cordova:not(.fullscreen) .has-header {
+  top: 140px;
+}
