@@ -95,7 +95,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     controller: 'InternoCtrl'
   })
   .state('acordion', {
-    url: '/acordion',
+    url: '/acordion/:page',
     templateUrl: 'templates/acordion.html',
     controller: 'AcordionCtrl'
   })
@@ -108,7 +108,14 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     url: '/esqueceusenha',
     templateUrl: 'templates/esqueceusenha.html',
     controller: 'EsqueceuSenhaCtrl'
-  });
+  })
+  .state('contato', {
+    url: '/contato',
+    templateUrl: 'templates/contato.html',
+    controller: 'ContatoCtrl'
+  })
+
+  ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 

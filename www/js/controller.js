@@ -70,8 +70,10 @@ angular.module('starter.controllers', ['ionic'])
   })
 
 
-.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
-    $scope.page = "guia";
+.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService,  $stateParams) {
+    
+
+    $scope.page = $stateParams.page;
 
     $scope.getBack = function() {
       $ionicViewService.getBackView().go();
@@ -149,4 +151,22 @@ angular.module('starter.controllers', ['ionic'])
       return $scope.shownGroup === group;
     };
 
-  });
+  })
+
+.controller('ContatoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
+$scope.groups = [];
+    for (var i = 0; i < 10; i++) {
+      $scope.groups[i] = {
+        name: 'Thiago',
+        cargo: (i % 2) ? null : 'Presidente',
+        phone: '+55 11 9 9999-9999',
+        email: 'thiago@mobint.com.brs'
+      };
+    }
+
+    $scope.getBack = function() {
+      $ionicViewService.getBackView().go();
+    }
+
+    
+});

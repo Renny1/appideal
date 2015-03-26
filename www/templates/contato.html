@@ -13,21 +13,21 @@
           </div>
  
            <div class="col col-offset-20" ng-class="{'paddingLeft30': page == 'guia'}">
-            <img src="img/icons/def_{{page}}_azul_icon.png" class="img-responsive iconImg floatLeft">
-            <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight">{{page}}</h3>
+            <img src="img/icons/def_info_azul_icon.png" class="img-responsive iconImg floatLeft">
+            <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight">Contato</h3>
           </div>
       </div>
   </ion-header-bar>
   <ion-content scroll="true" class="bg-color">
     <ion-list>
     <div ng-repeat="group in groups">
-      <ion-item class="item-stable arcoddion fontFlamalight " ng-class="{'no-border' : $index == 0}" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
-        <i class="icon " ng-class="isGroupShown(group) ? 'ion-android-remove-circle' : 'ion-android-add-circle'"></i>
-        &nbsp;
-        Group {{group.name}}
-      </ion-item>
-      <ion-item  ng-bind-html="item | trustAsHtml" class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)">
-        {{item}}
+      <ion-item class="item-stable arcoddion fontFlamalight " ng-class="{'no-border' : $index == 0}">
+        <div>{{group.name}}</div>
+        <div ng-class="(group.cargo == null)? hide : show">{{group.cargo}}</div>
+        {{group.email}}<br>
+        <i class="icon ion-ios-telephone-outline paddingRight3 iconFont"></i>{{group.phone}} <i class="icon ion-ios-email-outline marginLeft7 iconFont"></i>
+<!--  ng-class="ion-ios-telephone-outline" -->
+<!--          ng-class="ion-ios-email-outline" -->
       </ion-item>
     </div>
     </ion-list>
