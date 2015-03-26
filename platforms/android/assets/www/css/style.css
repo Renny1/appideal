@@ -8,13 +8,22 @@ body{
 .bg-color{
 	background-color: #0f8db1;
 }
-
+.bar, .bar.bar-positive.fix-header{
+	height: 142px !important;
+	background-color: #0f8db1;
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+.has-header {
+  top: 140px;
+}
+.banerTitle{height: 41px;}
 .iconVoltar{width: 25px;margin: 8px 0px 0px 10px;}
 /*arrumar*/
-input[type="text"], input[type="password"]{
-  line-height: 34px!important;
-
-}
+.linkTelefone{color:#FFF; text-decoration: none;}
+.iconFont{font-size: 21px;}
+input[type="text"], input[type="password"]{line-height: 34px!important;}
 .iconImg{width: 31px; margin-top: 3px;}
 .floatLeft{float:left;}
 .floatRight{float:right;}
@@ -32,9 +41,13 @@ input[type="text"], input[type="password"]{
 .marginBottom4{margin-bottom: 4px;}
 .marginLeft7{margin-left: 7px;}
 .marginRight17{margin-right: 17px;}
+.paddingRight3{padding-right: 3px;}
 .paddingLeft5{padding-left: 5px;}
 .paddingLeft10{padding-left: 10px;}
 .paddingLeft15{padding-left: 15px;}
+.paddingLeft20{padding-left: 20px;}
+.paddingLeft27{padding-left: 27px;}
+.paddingLeft30{padding-left: 20px;}
 .paddingTop1{padding-top: 1px;}
 .paddingTop3{ padding-top: 3px;}
 .paddingTop4{padding-top: 4px;}
@@ -96,6 +109,9 @@ input[type="text"], input[type="password"]{
 	color:#FFF;
 	font-size: 19px;
 	white-space: nowrap;
+	width: auto;
+	height: auto;
+	/* float: left; */
 }
 .list .item.item-accordion {
 	line-height: 38px;
@@ -132,12 +148,24 @@ padding: 5px 16px 5px 16px;
   background-color: transparent!important; 
  }
 
-  .arcoddion {
-  border-color: rgba(79, 79, 79, 0.45)!important;
-  background-color: rgba(0, 0, 0, 0)!important;
-
+.arcoddion, .interna-item {
+  background-color: transparent !important;
   padding: 10px 16px 10px 16px;
   color: #FFF!important;
-  border-top-color: #FFF!important;
-  border-bottom-color: rgba(0, 0, 0, 0)!important;
+  border-color: transparent !important;
+  border-top-color: #fff !important;
+}
+.no-border{
+	border-top-color: transparent !important;
+}
+
+/* iOS Specific Overrides to fix logo overlap */
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 25px;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+  height: 142px !important;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .has-header {
+  top: 200px;
 }

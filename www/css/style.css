@@ -8,8 +8,8 @@ body{
 .bg-color{
 	background-color: #0f8db1;
 }
-.bar.bar-positive.fix-header{
-	height: 142px;
+.bar, .bar.bar-positive.fix-header{
+	height: 142px !important;
 	background-color: #0f8db1;
 	display: block;
 	padding: 0;
@@ -163,12 +163,12 @@ padding: 5px 16px 5px 16px;
 }
 
 /* iOS Specific Overrides to fix logo overlap */
-.platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
   margin-top: 25px;
 }
-.platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
-  height: 140px;
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+  height: 142px !important;
 }
-.platform-ios7.platform-cordova:not(.fullscreen) .has-header {
-  top: 140px;
+.platform-ios.platform-cordova:not(.fullscreen) .has-header {
+  top: 200px;
 }

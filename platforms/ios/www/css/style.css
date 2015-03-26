@@ -1,1 +1,171 @@
 /* Empty. Add your own CSS if you like */
+@import url(fonts/fonts.css);
+
+body{
+	color: #FFFFFF;
+	font-family: flamalight;
+}
+.bg-color{
+	background-color: #0f8db1;
+}
+.bar, .bar.bar-positive.fix-header{
+	height: 142px !important;
+	background-color: #0f8db1;
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+.has-header {
+  top: 140px;
+}
+.banerTitle{height: 41px;}
+.iconVoltar{width: 25px;margin: 8px 0px 0px 10px;}
+/*arrumar*/
+.linkTelefone{color:#FFF; text-decoration: none;}
+.iconFont{font-size: 21px;}
+input[type="text"], input[type="password"]{line-height: 34px!important;}
+.iconImg{width: 31px; margin-top: 3px;}
+.floatLeft{float:left;}
+.floatRight{float:right;}
+.img-responsive{max-width: 100%;height: auto;}
+.heigth45{height:45px;}
+.greenIdeal{color:#0f8db1;}
+.fontFlamalight{font-family: flamalight;}
+.fontSize17{font-size: 17px!important}
+.textWhite{color:#FFF!important;}
+.textCapitalize{text-transform: capitalize}
+.textUppercase{text-transform: uppercase;}
+.marginTop4{margin-top:4px!important;}
+.marginTop7{margin-top: 7px;}
+.marginTop12{margin-top: 12px;}
+.marginBottom4{margin-bottom: 4px;}
+.marginLeft7{margin-left: 7px;}
+.marginRight17{margin-right: 17px;}
+.paddingRight3{padding-right: 3px;}
+.paddingLeft5{padding-left: 5px;}
+.paddingLeft10{padding-left: 10px;}
+.paddingLeft15{padding-left: 15px;}
+.paddingLeft20{padding-left: 20px;}
+.paddingLeft27{padding-left: 27px;}
+.paddingLeft30{padding-left: 20px;}
+.paddingTop1{padding-top: 1px;}
+.paddingTop3{ padding-top: 3px;}
+.paddingTop4{padding-top: 4px;}
+.paddingTop5{padding-top: 5px;}
+.paddingTop7{  padding-top: 7px;}
+.paddingTop11{  padding-top: 11px!important;}
+.paddingTop25{padding-top:25px;}
+.paddingTop30{padding-top:30px!important;}
+.paddingTop40{padding-top: 40px;}
+.paddingTop79{padding-top: 79px;}
+.paddingTop58{padding-top:58px!important;}
+.paddingBottom5{padding-bottom:5px;}
+.paddingBottom10{padding-bottom:10px!important;}
+.paddingBottom15{padding-bottom:15px;}
+.paddingBottom25{padding-bottom:25px;}
+
+
+
+.center{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-direction: normal;
+	-moz-box-direction: normal;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-align-content: stretch;
+	-ms-flex-line-pack: stretch;
+	align-content: stretch;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.esqueceuSenha{
+	font-family: flamalight;
+	font-size: 14px;
+	white-space: nowrap;
+}
+.item-input{
+	height:30px;
+}
+.main-link{
+	text-decoration:none;
+	color:#FFF;
+	font-size: 19px;
+	white-space: nowrap;
+	width: auto;
+	height: auto;
+	/* float: left; */
+}
+.list .item.item-accordion {
+	line-height: 38px;
+	padding-top: 0;
+	padding-bottom: 0;
+	transition: 0.09s all linear;
+	background-color: #FFF;
+	border-color: rgba(79, 79, 79, 0.45)!important;
+	color: #272727;
+}
+.list .item.item-accordion.ng-hide {
+	line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+	display: block !important;
+}
+
+.interna-item {
+  border-color: rgba(79, 79, 79, 0.45);
+  background-color: transparent;
+padding: 5px 16px 5px 16px;
+}
+
+.item-complex .item-content, .item-radio .item-content {
+  position: relative;
+  z-index: 2;
+  padding: 5px 16px 5px 16px;
+  border: none;
+  background-color: transparent; }
+
+.item .item-content.activated{
+  border: none!important;
+  background-color: transparent!important; 
+ }
+
+.arcoddion, .interna-item {
+  background-color: transparent !important;
+  padding: 10px 16px 10px 16px;
+  color: #FFF!important;
+  border-color: transparent !important;
+  border-top-color: #fff !important;
+}
+.no-border{
+	border-top-color: transparent !important;
+}
+
+/* iOS Specific Overrides to fix logo overlap */
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: 25px;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+  height: 142px !important;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .has-header {
+  top: 200px;
+}

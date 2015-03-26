@@ -30,6 +30,8 @@
     <author email="devteam@mobint.com.br" href="http://www.mobint.com.br/">Mobint Devteam</author>
     <content src="index.html" />
     <access origin="*" />
+    <access launch-external="yes" origin="tel:*" />
+    <access launch-external="yes" origin="mailto:*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
