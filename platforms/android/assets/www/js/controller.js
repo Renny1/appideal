@@ -10,23 +10,28 @@ angular.module('starter.controllers', ['ionic'])
       $ionicLoading.show({
         template: 'Carregando...'
       });
-      /*    PostService.post($scope.data.username, $scope.data.password).success(function(data) {
+/*      var url = "";
+      var param = {
+        user: $scope.data.username,
+        senha: $scope.data.password,
+      };*/
+/*      PostService.post($scope.data.username, $scope.data.password).success(function(data) {
+        console.log(data);
+        IDEALFactory.setUser({
+          'username': $scope.data.username
+        }, true);
 
-            IDEALFactory.setUser({
-              'username': $scope.data.username
-            }, true);
 
+        $ionicLoading.hide();
+        $state.go('home');
+      }).error(function(data) {
+        $ionicLoading.hide();
+        var alertPopup = $ionicPopup.alert({
+          title: 'Falha no login!',
+          template: 'Por favor, cheque sua conexão!'
+        });
+      });*/
 
-            $ionicLoading.hide();
-            $state.go('home');
-          }).error(function(data) {
-            $ionicLoading.hide();
-            var alertPopup = $ionicPopup.alert({
-              title: 'Falha no login!',
-              template: 'Por favor, cheque sua conexão!'
-            });
-          });
-      */
       $state.go("main");
     }
 
