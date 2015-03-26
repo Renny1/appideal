@@ -23,8 +23,7 @@
       <ion-item class="item-stable arcoddion fontFlamalight " ng-class="{'no-border' : $index == 0}">
         <div>{{group.name}}</div>
         <div ng-class="(group.cargo == null)? hide : show">{{group.cargo}}</div>
-        {{group.email}}<br>
-        <a ng-href="tel:+5511954293628"><i class="icon ion-ios-telephone-outline paddingRight3 iconFont"></i>{{group.phone}}</a> <i class="icon ion-ios-email-outline marginLeft7 iconFont"></i>
+        <a ng-href="tel:{{group.phone}}" class="linkTelefone"><i class="icon ion-ios-telephone-outline paddingRight3 iconFont"></i>{{group.phone}}</a>  <a ng-href="mailto:{{group.email}}" class="linkTelefone"><i class="icon ion-ios-email-outline marginLeft7 iconFont"></i></a>
 <!--  ng-class="ion-ios-telephone-outline" -->
 <!--          ng-class="ion-ios-email-outline" -->
       </ion-item>

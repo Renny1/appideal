@@ -39,7 +39,9 @@ angular.module('starter.controllers', ['ionic'])
 
   })
   .controller('EsqueceuSenhaCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
-
+    $scope.enviarPedido = function() {
+      $state.go('login');
+    }
 
   })
   .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
@@ -157,10 +159,10 @@ angular.module('starter.controllers', ['ionic'])
   $scope.groups = [];
   for (var i = 0; i < 10; i++) {
     $scope.groups[i] = {
-      name: 'Thiago',
-      cargo: (i % 2) ? null : 'Presidente',
+      name: 'Renan',
+      cargo: (i % 2) ? null : 'SEO',
       phone: '+55 11 9 9999-9999',
-      email: 'thiago@mobint.com.brs'
+      email: 'thiago@mobint.com.br'
     };
   }
 

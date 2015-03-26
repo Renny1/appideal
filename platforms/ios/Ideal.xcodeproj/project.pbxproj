@@ -456,7 +456,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = Ideal;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -486,7 +486,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = Ideal;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

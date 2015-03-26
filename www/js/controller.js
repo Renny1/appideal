@@ -39,7 +39,9 @@ angular.module('starter.controllers', ['ionic'])
 
   })
   .controller('EsqueceuSenhaCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
-
+    $scope.enviarPedido = function() {
+      $state.go('login');
+    }
 
   })
   .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
