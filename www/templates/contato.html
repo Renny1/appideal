@@ -21,9 +21,9 @@
     <ion-list>
     <div ng-repeat="group in groups">
       <ion-item class="item-stable arcoddion fontFlamalight " ng-class="{'no-border' : $index == 0}">
-        <div>{{group.name}}</div>
-        <div ng-class="(group.cargo == null)? hide : show">{{group.cargo}}</div>
-        <a ng-href="tel:{{group.phone}}" class="linkTelefone"><i class="icon ion-ios-telephone-outline paddingRight3 iconFont"></i>{{group.phone}}</a>  <a ng-href="mailto:{{group.email}}" class="linkTelefone"><i class="icon ion-ios-email-outline marginLeft7 iconFont"></i></a>
+        <div class="paddingBottom5">{{group.name}}</div>
+        <div ng-class="{'displayNone': group.cargo != ''}" class="paddingBottom5">{{group.cargo}}</div>
+        <a ng-href="tel:{{group.phone}}" class="linkTelefone paddingBottom5"><i class="icon ion-ios-telephone-outline paddingRight3 iconFont"></i>{{group.phone}}</a>  <a ng-href="mailto:{{group.email}}" class="linkTelefone"><i class="icon ion-ios-email-outline marginLeft7 iconFont"></i></a>
 <!--  ng-class="ion-ios-telephone-outline" -->
 <!--          ng-class="ion-ios-email-outline" -->
       </ion-item>
