@@ -1,14 +1,17 @@
 angular.module('starter.services', [])
-.constant("URL", "http://www.ideal.mobint.com.br/")
-
+.constant("URL", "http://192.168.1.219/wordpress/")
+/*?json=get_posts&category_name=usuario_app*/
 .service('PostService', function($q, $http, $ionicLoading, URL) {
+
   return {
+
     Post: function(url_caminho,params) {
+
       var deferred = $q.defer();
       var promise = deferred.promise;
       var url =  URL + url_caminho;
 
-      $.post(url, params)
+      $http.post(url, params)
       .success(function(data) {
           deferred.resolve(data);
         }).error(function(err) {

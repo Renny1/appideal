@@ -27,18 +27,20 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
 
 .factory('IDEALFactory',function($localstorage){
 
-  var _userInfo = $localstorage.getObject('userInfo');
+  var _infoUser = $localstorage.getObject('infoUser');
 
   return{
-    setUser : function(userInfo,manterConectado){
+
+    setInfoUser : function(infoUser,manterConectado){
       if(manterConectado){
-        $localstorage.setObject('userInfo',userInfo);
+        $localstorage.setObject('infoUser',JSON.stringify(infoUser));
       }
-      _userInfo = userInfo;
+      _infoUser = JSON.stringify(infoUser);
     },
-    getUser : function(){
-      return _userInfo;
+    getInfoUser : function(){
+      return JSON.parse(_infoUser);
     }
+
   };
 })
 
@@ -54,9 +56,9 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
       StatusBar.styleDefault();
     }
 
-    var user = IDEALFactory.getUser();
-    if(typeof user.idUser !== 'undefined' && user.idUser !== null){
-      $state.go('home');
+    var user = IDEALFactory.getInfoUser();
+    if(typeof user.login !== 'undefined' && user.login !== null){
+      $state.go('main');
     }else{
       $state.go('login');
     }
