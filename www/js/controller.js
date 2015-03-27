@@ -25,7 +25,7 @@ angular.module('starter.controllers', ['ionic'])
         template: 'Carregando...'
       });
       var url = "?json=get_posts&category_name=usuario_app&include=custom_fields,categories";
-      
+
       /*      var param = {
               user: $scope.data.username,
               senha: $scope.data.password
@@ -61,8 +61,8 @@ angular.module('starter.controllers', ['ionic'])
           } else {
             if (i == (data.posts.length - 1)) {
               $ionicLoading.hide();
-              navigator.notification.alert("Usuário ou senha inválidos!", "alertCallback", "[title]", "OKZ")
-              
+              // navigator.notification.alert("Usuário ou senha inválidos!", "alertCallback", "[title]", "OKZ")
+              alert("Usuário ou senha inválidos!");
               /*              var alertPopup = $ionicPopup.alert({
                               title: 'Usuário ou senha inválidos!',
                               template: 'Por favor, cheque sua conexão!'
@@ -75,7 +75,7 @@ angular.module('starter.controllers', ['ionic'])
 
       }).error(function(data) {
         $ionicLoading.hide();
-        alert("Usuário ou senha inválidos!");
+        alert("Falha no login, cheque sua conexão!");
         /*        var alertPopup = $ionicPopup.alert({
                   title: 'Falha no login!',
                   template: 'Por favor, cheque sua conexão!'
@@ -100,7 +100,33 @@ angular.module('starter.controllers', ['ionic'])
 
   })
   .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
+    $scope.guia = function(){
 
+      $ionicLoading.show({
+        template: 'Carregando...'
+      });
+      $state.go('acordion',{'page' : 'guia'});
+    }
+    $scope.informacoes = function(){
+
+      $ionicLoading.show({
+        template: 'Carregando...'
+      });
+      $state.go('interno',{'page' : 'informacoes'});
+    }
+    $scope.briefings = function(){
+
+      $ionicLoading.show({
+        template: 'Carregando...'
+      });
+      $state.go('interno',{'page' : 'briefings'});
+    }
+    $scope.contato = function(){
+      $ionicLoading.show({
+        template: 'Carregando...'
+      });
+      $state.go('contato');
+    }
 
     $scope.getBack = function() {
       var infoUser = {};
@@ -109,59 +135,69 @@ angular.module('starter.controllers', ['ionic'])
       }, true);
       $state.go("login");
     }
+
     $ionicLoading.hide({
       template: 'Carregando...'
     });
 
 
   })
-  .controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
+  .controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService, PostService) {
+    
+    $scope.page = $stateParams.page;
+
+    var user = IDEALFactory.getInfoUser();
+    console.log(user);
+
+    var url = "?json=get_posts&category_name=" + $stateParams.page + "+" + user.infoUser.empresa + "&include=custom_fields";
+    PostService.Post(url).success(function(data) {
+      console.log(data);
+      IDEALFactory.setInfoInterno(data.posts, false);
+      $scope.groups = [];
+      for (var i = 0; i < data.posts.length; i++) {
+        $scope.groups[i] = {
+          index: i,
+          data: ($stateParams.page == 'briefings') ? data.posts[i].custom_fields.data[0] : "",
+          title: ($stateParams.page == 'briefings') ? data.posts[i].custom_fields.titulo_briefing[0] : data.posts[i].custom_fields.titulo_informacoes[0]
+        };
+
+      }
+
+      $ionicLoading.hide();
+
+    }).error(function(data) {
+      $ionicLoading.hide();
+    });
+
+    // $scope.items = arrayItems;
+
     $scope.getBack = function() {
       $ionicViewService.getBackView().go();
     }
-    $scope.page = $stateParams.page;
-    var arrayItems = [
-      ["Teste", "economico", "20/05"],
-      ["Teste", "economico", "20/05"],
-      ["Teste", "economico", "20/05"]
-    ];
-
-
-    $scope.items = arrayItems;
-
   })
 
 
-.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService, $stateParams) {
-
-
+.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService, $stateParams, PostService) {
+    
     $scope.page = $stateParams.page;
 
     $scope.getBack = function() {
       $ionicViewService.getBackView().go();
     }
-var url = "?json=get_posts&category_name=usuario_app&include=custom_fields,categories";
-
-
-PostService.Post(url).success(function(data) {
-
-
-
-}).error(function(data) {
+    var url = "?json=get_posts&category_name=guia";
+    PostService.Post(url).success(function(data) {
+      console.log(data);
+      $scope.groups = [];
+      for (var i = 0; i < data.posts.length; i++) {
+        $scope.groups[i] = {
+          name: data.posts[i].title,
+          items: data.posts[i].content
+        };
         $ionicLoading.hide();
-      
-});
-
-    $scope.groups = [];
-    for (var i = 0; i < 10; i++) {
-      $scope.groups[i] = {
-        name: i,
-        items: []
-      };
-      for (var j = 0; j < 8; j++) {
-        $scope.groups[i].items.push(i + '-' + j);
       }
-    }
+    }).error(function(data) {
+      $ionicLoading.hide();
+    });
     $scope.toggleGroup = function(group) {
       if ($scope.isGroupShown(group)) {
         $scope.shownGroup = null;
@@ -172,22 +208,6 @@ PostService.Post(url).success(function(data) {
     $scope.isGroupShown = function(group) {
       return $scope.shownGroup === group;
     };
-
-
-    /*
-    <ion-item class="item-stable"
-                ng-click="toggleGroup(group)"
-                ng-class="{active: isGroupShown(group)}">
-          <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-        &nbsp;
-        Group {{group.name}}
-      </ion-item>
-      <ion-item class="item-accordion"
-                ng-repeat="item in group.items"
-                ng-show="isGroupShown(group)">
-        {{item}}
-      </ion-item>
-    //*/
   })
   .controller('NotesCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
 
@@ -195,22 +215,30 @@ PostService.Post(url).success(function(data) {
       $ionicViewService.getBackView().go();
     }
     $scope.id = $stateParams.id;
-    console.log($scope.id);
+
+
+    var infosInterno = IDEALFactory.getInfoInterno($scope.id);
+
+    console.log(infosInterno);
 
     $scope.page = $stateParams.page;
 
-
-    $scope.titulo = "<h1>cabeçalho notes</h1>";
+ if($scope.page == "briefings"){
+    var cabecalho = infosInterno[0].custom_fields.titulo_briefing[0] + "<br/>" + infosInterno[0].custom_fields.data[0] + "<br/>" + infosInterno[0].custom_fields.forma[0] + "<br/>" //+infosInterno[0].custom_fields.contato[0] + "<br/>";
+    $scope.titulo = cabecalho;
+  }else{
+    $scope.titulo = infosInterno[0].custom_fields.cabecalho[0];
+  }
     // $scope.page = "briefing";
     $scope.groups = [];
-    for (var i = 0; i < 10; i++) {
-      $scope.groups[i] = {
-        name: i,
-        items: []
+    for (var i = 0; i < infosInterno.length; i++) {
+      for (var j = 0; j < infosInterno[0].custom_fields.titulo.length; j++) {
+        var custom_fields = infosInterno[0].custom_fields;
+        $scope.groups[j] = {
+          title: custom_fields.titulo[j],
+          valor: custom_fields.valor[j]
+        };
       };
-      for (var j = 0; j < 8; j++) {
-        $scope.groups[i].items.push(i + '-' + j);
-      }
     }
     $scope.toggleGroup = function(group) {
       if ($scope.isGroupShown(group)) {
@@ -225,17 +253,26 @@ PostService.Post(url).success(function(data) {
 
   })
 
-.controller('ContatoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
+.controller('ContatoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, PostService, $rootScope, $stateParams, $ionicViewService) {
+  
   $scope.groups = [];
-  for (var i = 0; i < 10; i++) {
-    $scope.groups[i] = {
-      name: 'Renan',
-      cargo: (i % 2) ? null : 'SEO',
-      phone: '+55 11 9 9999-9999',
-      email: 'thiago@mobint.com.br'
-    };
-  }
-
+  var user = IDEALFactory.getInfoUser();
+  var url = "?json=get_posts&category_name=contatos+"+ user.infoUser.empresa+"&include=custom_fields";
+    PostService.Post(url).success(function(data) {
+      console.log(data);
+      $scope.groups = [];
+      for (var i = 0; i < data.posts.length; i++) {
+        $scope.groups[i] = {
+          name: data.posts[i].custom_fields.nome[0],
+          cargo: data.posts[i].custom_fields.cargo[0],
+          phone: data.posts[i].custom_fields.telefone[0],
+          email: data.posts[i].custom_fields.email[0]
+        };
+      }
+      $ionicLoading.hide();
+    }).error(function(data) {
+      $ionicLoading.hide();
+    });
   $scope.getBack = function() {
     $ionicViewService.getBackView().go();
   }

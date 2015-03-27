@@ -12,8 +12,8 @@
 <!-- ng-class="{'no-border' : $index == 0}" -->
       <div class="col col-offset-10 " ng-class="{'paddingLeft30': page == 'materiais'}">
         <img src="img/icons/def_info_azul_icon.png" class="img-responsive iconImg floatLeft">
-        <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page == 'materiais'"> Materiais</h3>
-        <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page != 'materiais'"> {{page}} Notes</h3>
+        <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page == 'informacoes'"> Informações</h3>
+        <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight" ng-if="page != 'informacoes'"> {{page}} Notes</h3>
       </div>
     </div>
   </ion-header-bar>
@@ -29,11 +29,11 @@
           ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
           <i class="icon " ng-class="isGroupShown(group) ? 'ion-android-remove-circle' : 'ion-android-add-circle'"></i>
           &nbsp;
-          Group {{group.name}}
+          {{group.title}}
         </ion-item>
-        <ion-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)">
-        {{item}}
-        </ion-item>
+        <div ng-bind-html="group.valor | trustAsHtml" class="item-accordion" ng-show="isGroupShown(group)">
+        
+        </div>
       </div>
     </ion-list>
   </ion-content>
