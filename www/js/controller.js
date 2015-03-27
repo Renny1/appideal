@@ -100,28 +100,34 @@ angular.module('starter.controllers', ['ionic'])
 
   })
   .controller('MainCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
-    $scope.guia = function(){
+    $scope.guia = function() {
 
       $ionicLoading.show({
         template: 'Carregando...'
       });
-      $state.go('acordion',{'page' : 'guia'});
+      $state.go('acordion', {
+        'page': 'guia'
+      });
     }
-    $scope.informacoes = function(){
+    $scope.informacoes = function() {
 
       $ionicLoading.show({
         template: 'Carregando...'
       });
-      $state.go('interno',{'page' : 'informacoes'});
+      $state.go('interno', {
+        'page': 'informacoes'
+      });
     }
-    $scope.briefings = function(){
+    $scope.briefings = function() {
 
       $ionicLoading.show({
         template: 'Carregando...'
       });
-      $state.go('interno',{'page' : 'briefings'});
+      $state.go('interno', {
+        'page': 'briefings'
+      });
     }
-    $scope.contato = function(){
+    $scope.contato = function() {
       $ionicLoading.show({
         template: 'Carregando...'
       });
@@ -139,11 +145,13 @@ angular.module('starter.controllers', ['ionic'])
     $ionicLoading.hide({
       template: 'Carregando...'
     });
+    var user = IDEALFactory.getInfoUser();
+    $scope.username = user.infoUser.login;
 
 
   })
   .controller('InternoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService, PostService) {
-    
+
     $scope.page = $stateParams.page;
 
     var user = IDEALFactory.getInfoUser();
@@ -178,7 +186,7 @@ angular.module('starter.controllers', ['ionic'])
 
 
 .controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService, $stateParams, PostService) {
-    
+
     $scope.page = $stateParams.page;
 
     $scope.getBack = function() {
@@ -223,12 +231,12 @@ angular.module('starter.controllers', ['ionic'])
 
     $scope.page = $stateParams.page;
 
- if($scope.page == "briefings"){
-    var cabecalho = infosInterno[0].custom_fields.titulo_briefing[0] + "<br/>" + infosInterno[0].custom_fields.data[0] + "<br/>" + infosInterno[0].custom_fields.forma[0] + "<br/>" //+infosInterno[0].custom_fields.contato[0] + "<br/>";
-    $scope.titulo = cabecalho;
-  }else{
-    $scope.titulo = infosInterno[0].custom_fields.cabecalho[0];
-  }
+    if ($scope.page == "briefings") {
+      var cabecalho = infosInterno[0].custom_fields.titulo_briefing[0] + "<br/>" + infosInterno[0].custom_fields.data[0] + "<br/>" + infosInterno[0].custom_fields.forma[0] + "<br/>" //+infosInterno[0].custom_fields.contato[0] + "<br/>";
+      $scope.titulo = cabecalho;
+    } else {
+      $scope.titulo = infosInterno[0].custom_fields.cabecalho[0];
+    }
     // $scope.page = "briefing";
     $scope.groups = [];
     for (var i = 0; i < infosInterno.length; i++) {
@@ -254,25 +262,25 @@ angular.module('starter.controllers', ['ionic'])
   })
 
 .controller('ContatoCtrl', function($scope, $state, $ionicLoading, IDEALFactory, PostService, $rootScope, $stateParams, $ionicViewService) {
-  
+
   $scope.groups = [];
   var user = IDEALFactory.getInfoUser();
-  var url = "?json=get_posts&category_name=contatos+"+ user.infoUser.empresa+"&include=custom_fields";
-    PostService.Post(url).success(function(data) {
-      console.log(data);
-      $scope.groups = [];
-      for (var i = 0; i < data.posts.length; i++) {
-        $scope.groups[i] = {
-          name: data.posts[i].custom_fields.nome[0],
-          cargo: data.posts[i].custom_fields.cargo[0],
-          phone: data.posts[i].custom_fields.telefone[0],
-          email: data.posts[i].custom_fields.email[0]
-        };
-      }
-      $ionicLoading.hide();
-    }).error(function(data) {
-      $ionicLoading.hide();
-    });
+  var url = "?json=get_posts&category_name=contatos+" + user.infoUser.empresa + "&include=custom_fields";
+  PostService.Post(url).success(function(data) {
+    console.log(data);
+    $scope.groups = [];
+    for (var i = 0; i < data.posts.length; i++) {
+      $scope.groups[i] = {
+        name: data.posts[i].custom_fields.nome[0],
+        cargo: data.posts[i].custom_fields.cargo[0],
+        phone: data.posts[i].custom_fields.telefone[0],
+        email: data.posts[i].custom_fields.email[0]
+      };
+    }
+    $ionicLoading.hide();
+  }).error(function(data) {
+    $ionicLoading.hide();
+  });
   $scope.getBack = function() {
     $ionicViewService.getBackView().go();
   }
