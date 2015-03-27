@@ -19,6 +19,20 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "framework": {
+                "parents": {
+                    "AudioToolbox.framework": [
+                        {
+                            "xml": true,
+                            "count": 1
                         }
                     ]
                 }
@@ -33,6 +47,9 @@
             "PACKAGE_NAME": "com.mobint.idealionic"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.mobint.idealionic"
+        },
+        "org.apache.cordova.dialogs": {
             "PACKAGE_NAME": "com.mobint.idealionic"
         }
     },

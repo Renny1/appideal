@@ -56,6 +56,12 @@ angular.module('starter.controllers', ['ionic'])
             }, true);
             console.log(IDEALFactory.getInfoUser());
             $ionicLoading.hide();
+            var ipt_login = document.getElementById('input_mail');
+            ipt_login.value = "";
+
+            var ipt_pass= document.getElementById('input_pass');
+            ipt_pass.value = "";
+
             $state.go('main');
             break;
           } else {
@@ -177,7 +183,7 @@ angular.module('starter.controllers', ['ionic'])
   })
 
 
-.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService, $stateParams, PostService) {
+  .controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService, $stateParams, PostService) {
     
     $scope.page = $stateParams.page;
 
@@ -189,7 +195,8 @@ angular.module('starter.controllers', ['ionic'])
       console.log(data);
       $scope.groups = [];
       for (var i = 0; i < data.posts.length; i++) {
-        $scope.groups[i] = {
+        var index = parseInt(data.posts[i].title.substring(0,1))-1;
+        $scope.groups[index] = {
           name: data.posts[i].title,
           items: data.posts[i].content
         };
@@ -223,12 +230,12 @@ angular.module('starter.controllers', ['ionic'])
 
     $scope.page = $stateParams.page;
 
- if($scope.page == "briefings"){
-    var cabecalho = infosInterno[0].custom_fields.titulo_briefing[0] + "<br/>" + infosInterno[0].custom_fields.data[0] + "<br/>" + infosInterno[0].custom_fields.forma[0] + "<br/>" //+infosInterno[0].custom_fields.contato[0] + "<br/>";
-    $scope.titulo = cabecalho;
-  }else{
-    $scope.titulo = infosInterno[0].custom_fields.cabecalho[0];
-  }
+     if($scope.page == "briefings"){
+        var cabecalho = infosInterno[0].custom_fields.titulo_briefing[0] + "<br/>" + infosInterno[0].custom_fields.data[0] + "<br/>" + infosInterno[0].custom_fields.forma[0] + "<br/>" //+infosInterno[0].custom_fields.contato[0] + "<br/>";
+        $scope.titulo = cabecalho;
+      }else{
+        $scope.titulo = infosInterno[0].custom_fields.cabecalho[0];
+      }
     // $scope.page = "briefing";
     $scope.groups = [];
     for (var i = 0; i < infosInterno.length; i++) {
