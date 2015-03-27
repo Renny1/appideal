@@ -2,15 +2,30 @@ angular.module('starter.controllers', ['ionic'])
   .filter('trustAsHtml', function($sce) {
     return $sce.trustAsHtml;
   })
-  .controller('LoginCtrl', function($scope, PostService, $ionicPopup, $state, $http, IDEALFactory, $ionicLoading) {
-    $scope.data = {};
+  .controller('LoginCtrl', function($scope, PostService, $ionicPopup, $state, $http, IDEALFactory, $ionicLoading, $rootScope) {
 
-    $scope.data.persistente = false;
+
+    $rootScope.$on('$stateChangeSuccess',
+      function(event, toState, toParams, fromState, fromParams) {
+        console.log(toState);
+        $scope.state = toState.name;
+        if (toState.name == "login") {
+          var user = IDEALFactory.getInfoUser();
+          console.log(user.infoUser.login);
+          if (typeof user.infoUser.login !== 'undefined' && user.infoUser.login !== null) {
+            $state.go('main');
+          }
+        }
+      });
+
+    $scope.data = {};
+    $scope.data.persistente = true;
     $scope.login = function() {
       $ionicLoading.show({
         template: 'Carregando...'
       });
       var url = "?json=get_posts&category_name=usuario_app&include=custom_fields,categories";
+      
       /*      var param = {
               user: $scope.data.username,
               senha: $scope.data.password
@@ -46,10 +61,12 @@ angular.module('starter.controllers', ['ionic'])
           } else {
             if (i == (data.posts.length - 1)) {
               $ionicLoading.hide();
-              var alertPopup = $ionicPopup.alert({
-                title: 'Usuário ou senha inválidos!',
-                template: 'Por favor, cheque sua conexão!'
-              });
+              navigator.notification.alert("Usuário ou senha inválidos!", "alertCallback", "[title]", "OKZ")
+              
+              /*              var alertPopup = $ionicPopup.alert({
+                              title: 'Usuário ou senha inválidos!',
+                              template: 'Por favor, cheque sua conexão!'
+                            });*/
             }
 
 
@@ -58,10 +75,11 @@ angular.module('starter.controllers', ['ionic'])
 
       }).error(function(data) {
         $ionicLoading.hide();
-        var alertPopup = $ionicPopup.alert({
-          title: 'Falha no login!',
-          template: 'Por favor, cheque sua conexão!'
-        });
+        alert("Usuário ou senha inválidos!");
+        /*        var alertPopup = $ionicPopup.alert({
+                  title: 'Falha no login!',
+                  template: 'Por favor, cheque sua conexão!'
+                });*/
       });
 
       /*  $state.go("main");*/
@@ -122,8 +140,18 @@ angular.module('starter.controllers', ['ionic'])
     $scope.getBack = function() {
       $ionicViewService.getBackView().go();
     }
+var url = "?json=get_posts&category_name=usuario_app&include=custom_fields,categories";
 
-    // $scope.page = "briefing";
+
+PostService.Post(url).success(function(data) {
+
+
+
+}).error(function(data) {
+        $ionicLoading.hide();
+      
+});
+
     $scope.groups = [];
     for (var i = 0; i < 10; i++) {
       $scope.groups[i] = {

@@ -44,7 +44,6 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
   };
 })
 
-
 .run(function($ionicPlatform, IDEALFactory, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

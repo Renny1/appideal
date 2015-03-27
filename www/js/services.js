@@ -1,5 +1,5 @@
 angular.module('starter.services', [])
-.constant("URL", "http://192.168.1.219/wordpress/")
+.constant("URL", "http://idealcms.mobint.com.br")
 /*?json=get_posts&category_name=usuario_app*/
 .service('PostService', function($q, $http, $ionicLoading, URL) {
 
