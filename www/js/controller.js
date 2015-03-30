@@ -99,9 +99,35 @@ angular.module('starter.controllers', ['ionic'])
     };
 
   })
-  .controller('EsqueceuSenhaCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService) {
+  .controller('EsqueceuSenhaCtrl', function($scope, $state, $ionicLoading, $ionicPopup, IDEALFactory, $rootScope, $ionicViewService, PostService) {
+
+
+    var ipt_email = document.getElementById('input_mail');
+    ipt_email.value = "";
+
     $scope.enviarPedido = function() {
-      $state.go('login');
+      var ipt_email = document.getElementById('input_mail');   
+      var email = ipt_email.value;
+      var url = "/forget.php?mail=" + email;
+
+      PostService.Post(url)
+      .success(function(data) {
+        console.log(data);
+
+        /*    var alertPopup = $ionicPopup.alert({
+              title: 'E-mail! enviado',
+              template: 'Check seu e-mail depois de alguns minutos'
+            });*/
+
+
+      }).error(function(data) {
+        $ionicLoading.hide();
+        // alert("Falha no login, cheque sua conexão!");
+        var alertPopup = $ionicPopup.alert({
+          title: 'Falha no envio de e-mail!',
+          template: 'Por favor, cheque sua conexão!'
+        });
+      });
     }
 
   })
