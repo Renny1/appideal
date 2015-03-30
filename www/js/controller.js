@@ -6,7 +6,7 @@ angular.module('starter.controllers', ['ionic'])
     var ipt_login = document.getElementById('input_mail');
     ipt_login.value = "";
 
-    var ipt_pass= document.getElementById('input_pass');
+    var ipt_pass = document.getElementById('input_pass');
     ipt_pass.value = "";
 
     $rootScope.$on('$stateChangeSuccess',
@@ -60,7 +60,7 @@ angular.module('starter.controllers', ['ionic'])
             }, true);
             console.log(IDEALFactory.getInfoUser());
             $ionicLoading.hide();
-            
+
 
             $state.go('main');
             break;
@@ -69,10 +69,10 @@ angular.module('starter.controllers', ['ionic'])
               $ionicLoading.hide();
               // navigator.notification.alert("Usuário ou senha inválidos!", "alertCallback", "[title]", "OKZ")
               // alert("Usuário ou senha inválidos!");
-                            var alertPopup = $ionicPopup.alert({
-                              title: 'Usuário ou senha inválidos!',
-                              template: 'Por favor, cheque sua conexão!'
-                            });
+              var alertPopup = $ionicPopup.alert({
+                title: 'Usuário ou senha inválidos!',
+                template: 'Por favor, cheque sua conexão!'
+              });
             }
 
 
@@ -82,10 +82,10 @@ angular.module('starter.controllers', ['ionic'])
       }).error(function(data) {
         $ionicLoading.hide();
         // alert("Falha no login, cheque sua conexão!");
-                var alertPopup = $ionicPopup.alert({
-                  title: 'Falha no login!',
-                  template: 'Por favor, cheque sua conexão!'
-                });
+        var alertPopup = $ionicPopup.alert({
+          title: 'Falha no login!',
+          template: 'Por favor, cheque sua conexão!'
+        });
       });
 
       /*  $state.go("main");*/
@@ -191,7 +191,10 @@ angular.module('starter.controllers', ['ionic'])
   })
 
 
-  .controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService, $stateParams, PostService) {
+.controller('AcordionCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $ionicViewService, $stateParams, PostService, $location, $anchorScroll, $ionicScrollDelegate) {
+
+
+
     $scope.page = $stateParams.page;
 
     $scope.getBack = function() {
@@ -202,7 +205,7 @@ angular.module('starter.controllers', ['ionic'])
       console.log(data);
       $scope.groups = [];
       for (var i = 0; i < data.posts.length; i++) {
-        var index = parseInt(data.posts[i].title.substring(0,1))-1;
+        var index = parseInt(data.posts[i].title.substring(0, 1)) - 1;
         $scope.groups[index] = {
           name: data.posts[i].title,
           items: data.posts[i].content
@@ -212,16 +215,35 @@ angular.module('starter.controllers', ['ionic'])
     }).error(function(data) {
       $ionicLoading.hide();
     });
-    $scope.toggleGroup = function(group) {
+    $scope.toggleGroup = function(elem, group) {
+
+
       if ($scope.isGroupShown(group)) {
         $scope.shownGroup = null;
+
       } else {
         $scope.shownGroup = group;
+
       }
+
+      /*console.log("entrou");*/
+      /*        $anchorScroll.yOffset = 500;
+              $location.hash('itemsAncora:nth-child(1)');
+              $anchorScroll();*/
+
     };
     $scope.isGroupShown = function(group) {
+
       return $scope.shownGroup === group;
     };
+
+    $scope.gotoItem = function(elem) {
+
+      /* $location.hash('itemsAncora:nth-child('+elem+')');*/
+      var handle = $ionicScrollDelegate.$getByHandle('content');
+      handle.anchorScroll();
+    };
+
   })
   .controller('NotesCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
 
@@ -244,12 +266,12 @@ angular.module('starter.controllers', ['ionic'])
     }
     // $scope.page = "briefing";
     $scope.groups = [];
-      for (var j = 0; j < infosInterno.custom_fields.titulo.length; j++) {
-        var custom_fields = infosInterno.custom_fields;
-        $scope.groups[j] = {
-          title: custom_fields.titulo[j],
-          valor: custom_fields.valor[j]
-        };
+    for (var j = 0; j < infosInterno.custom_fields.titulo.length; j++) {
+      var custom_fields = infosInterno.custom_fields;
+      $scope.groups[j] = {
+        title: custom_fields.titulo[j],
+        valor: custom_fields.valor[j]
+      };
     }
     $scope.toggleGroup = function(group) {
       if ($scope.isGroupShown(group)) {

@@ -2,26 +2,31 @@
   <ion-header-bar align-title="left" class="bar-positive fix-header bg-color">
     <div class="row">
       <div class="col col-50 col-offset-25">
-        <img src="img/logo.png" class="img-responsive">
+        <img ng-src="img/logo.png" class="img-responsive">
       </div>
     </div>
 
+<!--  <div id="scrollArea">
+  <a ng-click="gotoItem()">Go to bottom</a>
+ 
+</div> -->
 
       <div class="row banerTitle" style="background-color:#FFF;">
           <div class=" iconVoltar" ng-click="getBack()">
-            <img src="img/icons/voltar.png" class="img-responsive floatRight">
+            <img ng-src="img/icons/voltar.png" class="img-responsive floatRight">
           </div>
  
            <div class="col col-offset-20" ng-class="{'paddingLeft30': page == 'guia'}">
-            <img src="img/icons/def_{{page}}_azul_icon.png" class="img-responsive iconImg floatLeft">
+            <img ng-src="img/icons/def_{{page}}_azul_icon.png" class="img-responsive iconImg floatLeft">
             <h3 class="greenIdeal marginTop4 marginLeft7 marginBottom4 textCapitalize fontFlamalight">{{page}}</h3>
           </div>
       </div>
   </ion-header-bar>
-  <ion-content scroll="true" class="bg-color">
+  <ion-content scroll="true" class="bg-color" delegate-handle="content">
     <ion-list>
-    <div ng-repeat="group in groups">
-      <ion-item class="item-stable arcoddion fontFlamalight " ng-class="{'no-border' : $index == 0}" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+    
+    <div ng-repeat="group in groups" id="itemsAncora">
+      <ion-item class="item-stable arcoddion fontFlamalight " ng-class="{'no-border' : $index == 0}" ng-click="toggleGroup($index,group); gotoItem($index)" ng-class="{active: isGroupShown(group)}">
         <i class="icon " ng-class="isGroupShown(group) ? 'ion-android-remove-circle' : 'ion-android-add-circle'"></i>
         &nbsp;
         {{group.name}}

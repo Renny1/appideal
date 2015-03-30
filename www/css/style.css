@@ -120,13 +120,19 @@ input[type="text"], input[type="password"]{line-height: 34px!important;}
 }
 .item-accordion {
 	line-height: 38px;
-	padding-top: 0;
-	padding-bottom: 0;
 	transition: 0.09s all linear;
 	background-color: #FFF;
 	border-color: rgba(79, 79, 79, 0.45)!important;
 	color: #272727;
-	  padding: 0px 20px;
+	  
+	padding: 20px;
+}
+.item-accordion p{
+	line-height: 18px;
+}
+.list{
+	padding-bottom:10px;
+	  padding-top: 10px;
 }
 .list .item.item-accordion.ng-hide {
 	line-height: 0px;

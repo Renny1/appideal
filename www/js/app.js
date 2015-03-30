@@ -57,7 +57,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
   };
 })
 
-.run(function($ionicPlatform, IDEALFactory, $state) {
+.run(function($ionicPlatform, IDEALFactory, $state, $anchorScroll) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -75,8 +75,8 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
       $state.go('login');
     }
 
-
-
+/*$anchorScroll.yOffset = 200;  
+*/
   });
 })
 
