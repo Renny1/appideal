@@ -47,8 +47,9 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
 
       _infoInterno = JSON.stringify(infoInterno);
     },
-    getInfoInterno: function() {
-      return JSON.parse(_infoInterno);
+    getInfoInterno: function(infoInterno) {
+
+      return JSON.parse(_infoInterno)[infoInterno];
     }
 
 

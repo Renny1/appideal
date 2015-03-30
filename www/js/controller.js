@@ -3,7 +3,11 @@ angular.module('starter.controllers', ['ionic'])
     return $sce.trustAsHtml;
   })
   .controller('LoginCtrl', function($scope, PostService, $ionicPopup, $state, $http, IDEALFactory, $ionicLoading, $rootScope) {
+    var ipt_login = document.getElementById('input_mail');
+    ipt_login.value = "";
 
+    var ipt_pass= document.getElementById('input_pass');
+    ipt_pass.value = "";
 
     $rootScope.$on('$stateChangeSuccess',
       function(event, toState, toParams, fromState, fromParams) {
@@ -32,8 +36,8 @@ angular.module('starter.controllers', ['ionic'])
             };*/
 
       PostService.Post(url).success(function(data) {
-        var email = $scope.data.email;
-        var senha = $scope.data.password;
+        var email = $scope.data.email.toLowerCase();
+        var senha = $scope.data.password.toLowerCase();
         for (var i = 0; i < data.posts.length; i++) {
           if (data.posts[i].custom_fields.email == email && data.posts[i].custom_fields.pass == senha) {
             var categorias = data.posts[i].categories;
@@ -56,23 +60,19 @@ angular.module('starter.controllers', ['ionic'])
             }, true);
             console.log(IDEALFactory.getInfoUser());
             $ionicLoading.hide();
-            var ipt_login = document.getElementById('input_mail');
-            ipt_login.value = "";
-
-            var ipt_pass= document.getElementById('input_pass');
-            ipt_pass.value = "";
+            
 
             $state.go('main');
             break;
           } else {
-            if (i == (data.posts.length - 1)) {
+            if (i >= (data.posts.length - 1)) {
               $ionicLoading.hide();
               // navigator.notification.alert("Usuário ou senha inválidos!", "alertCallback", "[title]", "OKZ")
-              alert("Usuário ou senha inválidos!");
-              /*              var alertPopup = $ionicPopup.alert({
+              // alert("Usuário ou senha inválidos!");
+                            var alertPopup = $ionicPopup.alert({
                               title: 'Usuário ou senha inválidos!',
                               template: 'Por favor, cheque sua conexão!'
-                            });*/
+                            });
             }
 
 
@@ -81,11 +81,11 @@ angular.module('starter.controllers', ['ionic'])
 
       }).error(function(data) {
         $ionicLoading.hide();
-        alert("Falha no login, cheque sua conexão!");
-        /*        var alertPopup = $ionicPopup.alert({
+        // alert("Falha no login, cheque sua conexão!");
+                var alertPopup = $ionicPopup.alert({
                   title: 'Falha no login!',
                   template: 'Por favor, cheque sua conexão!'
-                });*/
+                });
       });
 
       /*  $state.go("main");*/
@@ -230,38 +230,26 @@ angular.module('starter.controllers', ['ionic'])
     }
     $scope.id = $stateParams.id;
 
-
     var infosInterno = IDEALFactory.getInfoInterno($scope.id);
 
     console.log(infosInterno);
 
     $scope.page = $stateParams.page;
 
-<<<<<<< HEAD
-     if($scope.page == "briefings"){
-        var cabecalho = infosInterno[0].custom_fields.titulo_briefing[0] + "<br/>" + infosInterno[0].custom_fields.data[0] + "<br/>" + infosInterno[0].custom_fields.forma[0] + "<br/>" //+infosInterno[0].custom_fields.contato[0] + "<br/>";
-        $scope.titulo = cabecalho;
-      }else{
-        $scope.titulo = infosInterno[0].custom_fields.cabecalho[0];
-      }
-=======
     if ($scope.page == "briefings") {
-      var cabecalho = infosInterno[0].custom_fields.titulo_briefing[0] + "<br/>" + infosInterno[0].custom_fields.data[0] + "<br/>" + infosInterno[0].custom_fields.forma[0] + "<br/>" //+infosInterno[0].custom_fields.contato[0] + "<br/>";
+      var cabecalho = infosInterno.custom_fields.titulo_briefing[0] + "<br/>" + infosInterno.custom_fields.data[0] + "<br/>" + infosInterno.custom_fields.forma[0] + "<br/>" //+infosInterno[0].custom_fields.contato[0] + "<br/>";
       $scope.titulo = cabecalho;
     } else {
-      $scope.titulo = infosInterno[0].custom_fields.cabecalho[0];
+      $scope.titulo = infosInterno.custom_fields.cabecalho[0];
     }
->>>>>>> d13aeaa756caffd81886d7cf572b935c0185cb6d
     // $scope.page = "briefing";
     $scope.groups = [];
-    for (var i = 0; i < infosInterno.length; i++) {
-      for (var j = 0; j < infosInterno[0].custom_fields.titulo.length; j++) {
-        var custom_fields = infosInterno[0].custom_fields;
+      for (var j = 0; j < infosInterno.custom_fields.titulo.length; j++) {
+        var custom_fields = infosInterno.custom_fields;
         $scope.groups[j] = {
           title: custom_fields.titulo[j],
           valor: custom_fields.valor[j]
         };
-      };
     }
     $scope.toggleGroup = function(group) {
       if ($scope.isGroupShown(group)) {
