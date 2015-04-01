@@ -5,20 +5,20 @@
         <img src="img/logo.png" class="img-responsive">
       </div>
     </div>
-    <div class="row banerTitle" style="background-color:#FFF;">
+    <div class="row banerTitle center" style="background-color:#FFF;">
       <div class="iconVoltar" ng-click="getBack()">
         <img src="img/icons/voltar.png" class="img-responsive floatRight">
       </div>
-       <div class="col col-offset-10 paddingLeft27">
+       <div class="col center" style="margin-left: -25px;">
         <img src="img/icons/def_info_azul_icon.png" class="img-responsive iconImg floatLeft">
-        <h3 class="greenIdeal textCapitalize fontFlamalight marginTop4" ng-if="page != 'informacoes'"> {{page}}</h3>
-        <h3 class="greenIdeal textCapitalize fontFlamalight marginTop4" ng-if="page == 'informacoes'"> Informações</h3>
+        <h3 class="greenIdeal textCapitalize fontFlamalight marginTop14" ng-if="page != 'informacoes'"> {{page}}</h3>
+        <h3 class="greenIdeal textCapitalize fontFlamalight marginTop14" ng-if="page == 'informacoes'"> Informações</h3>
       </div>
     </div>
   </ion-header-bar>
   <ion-content scroll="true" class="bg-color">      
     <ion-list>
-      <ion-item href="#/notes/{{page}}/{{$index}}" class="interna-item" ng-repeat="item in groups" ng-class="{'no-border' : $index == 0}">
+      <ion-item href="#/notes/{{page}}/{{item.indexStore}}" class="interna-item" ng-repeat="item in groups" ng-class="{'no-border' : $index == 0}">
       <div class="row">
         <div class="col-75">
           <h5 ng-bind-html="item.title | trustAsHtml" class="textWhite fontSize17 fontFlamalight item-text-wrap">{{item.title}}</h5>

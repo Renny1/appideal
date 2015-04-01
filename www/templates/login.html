@@ -12,7 +12,8 @@
 <div class="row center paddingBottom15">
 	<div class="col-67">
 		<label class="item item-input">
-			<input type="text" placeholder="E-mail" ng-model="data.email" class="alinhaInput" id="input_mail"/>
+			<input type="email" placeholder="E-mail" ng-model="data.email" class="alinhaInput" id="input_mail" 
+    autocapitalize="off" autocorrect="off" autocomplete="off" />
 		</label>
 		<div class="inputeffect"></div>
 	</div>
@@ -20,7 +21,8 @@
 <div class="row center">
 	<div class="col-67">
 		<label class="item item-input">
-			<input type="password" placeholder="Senha" ng-model="data.password" class="alinhaInput" id="input_pass"/>
+			<input type="password" placeholder="Senha" ng-model="data.password" class="alinhaInput" id="input_pass" 
+    autocapitalize="off" autocorrect="off" autocomplete="off"/>
 		</label>
 	</div>
 </div> 
@@ -34,7 +36,7 @@
 </div>
 <div class="row center paddingTop11" ng-click="esqueceusenha()">
 	<div class="col-75 center">
-		<a href class="esqueceuSenha textWhite text-item-wrap">Esqueci minha senhaa</a>
+		<a href class="esqueceuSenha textWhite text-item-wrap">Esqueci minha senha</a>
 	</div>
 </div>
 </div>

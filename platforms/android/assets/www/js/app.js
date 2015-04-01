@@ -18,6 +18,9 @@ angular.module('ionic.utils', [])
       },
       getObject: function(key) {
         return JSON.parse($window.localStorage[key] || '{}');
+      },
+      clear: function(){
+        return $window.localStorage.clear();
       }
     }
   }]);
@@ -43,13 +46,21 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     },
 
 
-      setInfoInterno: function(infoInterno) {
+    setInfoInterno: function(infoInterno) {
 
       _infoInterno = JSON.stringify(infoInterno);
     },
-    getInfoInterno: function() {
-      return JSON.parse(_infoInterno);
-    }
+    getInfoInterno: function(infoInterno) {
+
+      return JSON.parse(_infoInterno)[infoInterno];
+    },
+
+    setOffLine: function(local, info) {
+      $localstorage.setObject(local, JSON.stringify(info));
+    },
+    getOffLine: function(local) {
+      return JSON.parse($localstorage.getObject(local));
+    },
 
 
 
@@ -68,7 +79,8 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     }
 
     var user = IDEALFactory.getInfoUser();
-    if (typeof user.login !== 'undefined' && user.login !== null) {
+    
+    if (typeof user.infoUser.login !== 'undefined' && user.infoUser.login !== null) {
       $state.go('main');
     } else {
       $state.go('login');

@@ -1,8 +1,25 @@
+.popup-body{
+	color: #000;
+}
+.button.button-positive{
+	background-color: #0f8db1;
+}
 /* Empty. Add your own CSS if you like */
-@import url(fonts/fonts.css);
+/*@import url(fonts/fonts.css);
+*/
+
+@font-face {
+    font-family: flamalight;
+    src: url('fonts/flamalight.otf') format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
 
 body{
 	color: #FFFFFF;
+	font-family: flamalight;
+}
+div{
 	font-family: flamalight;
 }
 .bg-color{
@@ -18,8 +35,8 @@ body{
 .has-header {
   top: 140px;
 }
-.banerTitle{height: 41px;}
-.iconVoltar{width: 25px;margin: 8px 0px 0px 10px;}
+.banerTitle{height: 41px; padding: 0px!important;}
+.iconVoltar{width: 25px;margin: 8px;}
 /*arrumar*/
 .linkTelefone{color:#FFF; text-decoration: none;}
 .iconFont{font-size: 21px;}
@@ -38,6 +55,7 @@ input[type="text"], input[type="password"]{line-height: 34px!important;}
 .marginTop4{margin-top:4px!important;}
 .marginTop7{margin-top: 7px;}
 .marginTop12{margin-top: 12px;}
+.marginTop14{margin-top: 14px;}
 .marginBottom4{margin-bottom: 4px;}
 .marginLeft7{margin-left: 7px;}
 .marginRight17{margin-right: 17px;}
@@ -120,13 +138,15 @@ input[type="text"], input[type="password"]{line-height: 34px!important;}
 }
 .item-accordion {
 	line-height: 38px;
-	padding-top: 0;
-	padding-bottom: 0;
 	transition: 0.09s all linear;
 	background-color: #FFF;
 	border-color: rgba(79, 79, 79, 0.45)!important;
 	color: #272727;
-	  padding: 0px 20px;
+	padding: 20px;
+	line-height: 18px;
+}
+.item-accordion p{
+    line-height: 18px;
 }
 .list .item.item-accordion.ng-hide {
 	line-height: 0px;
@@ -135,7 +155,9 @@ input[type="text"], input[type="password"]{line-height: 34px!important;}
 .list .item.item-accordion.ng-hide-remove {
 	display: block !important;
 }
-
+.list{
+    padding-bottom:10px;
+  }
 .interna-item {
   border-color: rgba(79, 79, 79, 0.45);
   background-color: transparent;
