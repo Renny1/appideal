@@ -21,7 +21,7 @@
   <ion-content scroll="true" class="bg-color" delegate-handle="content">
     <ion-list>
     <div ng-repeat="group in groups" id="itemsAncora">
-      <ion-item class="item-stable arcoddion fontFlamalight " ng-class="{'no-border' : $index == 0}" ng-click="toggleGroup($index,group); gotoItem(this)" ng-class="{active: isGroupShown(group)}">
+      <ion-item ng-attr-id="c{{$index}}" class="item-stable arcoddion fontFlamalight " ng-class="{'no-border' : $index == 0}" ng-click="toggleGroup($index, group, 'c{{$index}}'); gotoItem('c{{$index}}')" ng-class="{active: isGroupShown(group)}">
         <i class="icon " ng-class="isGroupShown(group) ? 'ion-android-remove-circle' : 'ion-android-add-circle'"></i>
         &nbsp;
         {{group.name}}

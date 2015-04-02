@@ -26,61 +26,67 @@ angular.module('starter.controllers', ['ionic'])
   $scope.data = {};
   $scope.data.persistente = true;
   $scope.login = function() {
-    $ionicLoading.show({
-      template: 'Carregando...'
-    });
-    var url = "?json=get_posts&category_name=usuario_app&include=custom_fields,categories";
-    PostService.Post(url).success(function(data) {
-      var email = $scope.data.email.toLowerCase();
-      var senha = $scope.data.password.toLowerCase();
-      for (var i = 0; i < data.posts.length; i++) {
-        if (data.posts[i].custom_fields.email == email && data.posts[i].custom_fields.pass == senha) {
-          var categorias = data.posts[i].categories;
-          console.log(data.posts[i].custom_fields);
-          var empresa;
-          for (var n = 0; n < categorias.length; n++) {
-            console.log(categorias[n]);
-            if (categorias[n].slug != "usuario_app") {
-              empresa = categorias[n].slug;
-            }
-          };
-          var infoUser = {
-            login: data.posts[i].custom_fields.login[0],
-            email: data.posts[i].custom_fields.email[0],
-            status: data.posts[i].custom_fields.status[0],
-            empresa: empresa,
-            id: data.posts[i].id
-          };
-          IDEALFactory.setInfoUser({
-            'infoUser': infoUser
-          }, true);
-          //console.log(IDEALFactory.getInfoUser());
-          $ionicLoading.hide();
-          
-
-          $state.go('main');
-          break;
-        } else {
-          if (i >= (data.posts.length - 1)) {
-            $ionicLoading.hide();
-            var alertPopup = $ionicPopup.alert({
-              title: 'Usuário ou senha inválidos!',
-              template: 'Por favor, tente novamente!'
-            });
-          }
-
-
-        }
-      };
-
-    }).error(function(data) {
-      $ionicLoading.hide();
+    // $ionicLoading.show({
+    //   template: 'Carregando...'
+    // });
+    if($scope.data.email == null && $scope.data.email == null){
       var alertPopup = $ionicPopup.alert({
-        title: 'Falha no login!',
-        template: 'Por favor, cheque sua conexão!'
+        title: 'Usuário ou senha embranco!',
+        template: 'Por favor, tente novamente!'
       });
-    });
+    }else{
+      var url = "?json=get_posts&category_name=usuario_app&include=custom_fields,categories";
+      PostService.Post(url).success(function(data) {
+        var email = $scope.data.email.toLowerCase();
+        var senha = $scope.data.password.toLowerCase();
+        for (var i = 0; i < data.posts.length; i++) {
+          if (data.posts[i].custom_fields.email == email && data.posts[i].custom_fields.pass == senha) {
+            var categorias = data.posts[i].categories;
+            console.log(data.posts[i].custom_fields);
+            var empresa;
+            for (var n = 0; n < categorias.length; n++) {
+              console.log(categorias[n]);
+              if (categorias[n].slug != "usuario_app") {
+                empresa = categorias[n].slug;
+              }
+            };
+            var infoUser = {
+              login: data.posts[i].custom_fields.login[0],
+              email: data.posts[i].custom_fields.email[0],
+              status: data.posts[i].custom_fields.status[0],
+              empresa: empresa,
+              id: data.posts[i].id
+            };
+            IDEALFactory.setInfoUser({
+              'infoUser': infoUser
+            }, true);
+            //console.log(IDEALFactory.getInfoUser());
+            $ionicLoading.hide();
+            
 
+            $state.go('main');
+            break;
+          } else {
+            if (i >= (data.posts.length - 1)) {
+              $ionicLoading.hide();
+              var alertPopup = $ionicPopup.alert({
+                title: 'Usuário ou senha inválidos!',
+                template: 'Por favor, tente novamente!'
+              });
+            }
+
+
+          }
+        };
+
+      }).error(function(data) {
+        $ionicLoading.hide();
+        var alertPopup = $ionicPopup.alert({
+          title: 'Falha no login!',
+          template: 'Por favor, cheque sua conexão!'
+        });
+      });
+    }
     /*  $state.go("main");*/
   };
 
@@ -168,9 +174,9 @@ angular.module('starter.controllers', ['ionic'])
     $localstorage.clear();
     $state.go("login");
   }
-  $ionicLoading.hide({
-    template: 'Carregando...'
-  });
+  // $ionicLoading.hide({
+  //   template: 'Carregando...'
+  // });
   var user = IDEALFactory.getInfoUser();
   $scope.username = user.infoUser.login;
   
@@ -199,7 +205,8 @@ angular.module('starter.controllers', ['ionic'])
         if(i >= (Things.length-1)){ $ionicLoading.hide(); }
       })
       .error(function(data) {
-        $ionicLoading.hide();
+        console.log(data);
+        if(i >= (Things.length-1)){$ionicLoading.hide()};
         // alert("Falha no login, cheque sua conexão!");
         var alertPopup = $ionicPopup.alert({
           title: 'Falha!',
@@ -300,21 +307,44 @@ angular.module('starter.controllers', ['ionic'])
         $ionicLoading.hide();
       }
     }
-  $scope.toggleGroup = function(index, group) {
+  $scope.toggleGroup = function(index, group, elem) {
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;
+      var top = angular.element(document.getElementById(elem));
+      setTimeout(function(){
+        $ionicScrollDelegate.$getByHandle('content').scrollTo(0, 0 , true);
+      }, 200);
     } else {
       $scope.shownGroup = group;
+      var top = angular.element(document.getElementById(elem));
+      setTimeout(function(){
+        $ionicScrollDelegate.$getByHandle('content').scrollTo(0, top[0].offsetTop , true);
+      }, 200);
     }
   };
   $scope.isGroupShown = function(group) {
     return $scope.shownGroup === group;
   };
   $scope.gotoItem = function(elem) {
-      /* $location.hash('itemsAncora:nth-child('+elem+')');*/
-      var handle = $ionicScrollDelegate.$getByHandle('content');
-      handle.anchorScroll();
+      // console.log(elem);
+      // var top = angular.element(document.getElementById(elem));
+      // console.log(top[0].offsetTop);
+      // setTimeout(function(){
+      //   $ionicScrollDelegate.$getByHandle('content').scrollTo(0, top[0].offsetTop , true);
+      // }, 150);
     };
+})
+.directive('nome',function($ionicScrollDelegate, $location, $anchorScroll){
+  return{
+    restrict: 'A',
+    link: function(value,element){
+      // console.log(element);
+      // // var handle = $ionicScrollDelegate.$getByHandle(element);
+      // // handle.anchorScroll();
+      // $location.hash(element.id);
+      // $anchorScroll();
+    }
+  }
 })
 .controller('NotesCtrl', function($scope, $state, $ionicLoading, IDEALFactory, $rootScope, $stateParams, $ionicViewService) {
 
@@ -348,8 +378,16 @@ angular.module('starter.controllers', ['ionic'])
   $scope.toggleGroup = function(group) {
     if ($scope.isGroupShown(group)) {
       $scope.shownGroup = null;
+      var top = angular.element(document.getElementById(elem));
+      setTimeout(function(){
+        $ionicScrollDelegate.$getByHandle('content').scrollTo(0, 0 , true);
+      }, 200);
     } else {
       $scope.shownGroup = group;
+      var top = angular.element(document.getElementById(elem));
+      setTimeout(function(){
+        $ionicScrollDelegate.$getByHandle('content').scrollTo(0, top[0].offsetTop , true);
+      }, 200);
     }
   };
   $scope.isGroupShown = function(group) {

@@ -147,6 +147,13 @@ input[type="text"], input[type="password"]{line-height: 34px!important;}
 }
 .item-accordion p{
     line-height: 18px;
+	padding: 20px;
+}
+.item-accordion p{
+	line-height: 18px;
+}
+.list{
+	padding-bottom:10px;
 }
 .list .item.item-accordion.ng-hide {
 	line-height: 0px;
